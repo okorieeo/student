@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 public class EmployeeServiceImp implements EmployeeService {
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
     public EmployeeServiceImp(EmployeeRepository employeeRepository) {
         super();
@@ -38,6 +38,11 @@ public class EmployeeServiceImp implements EmployeeService {
 //           throw new ResourceNotFoundException("Employee", "id", id);
 //       }
         return employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee", "id", id));
+    }
+
+    @Override
+    public Employee getEmployeeByEmail(String email) {
+        return employeeRepository.findByEmail(email);
     }
 
     @Override

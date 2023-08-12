@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
 
     public EmployeeController(EmployeeService employeeService) {
         super();
@@ -43,6 +43,16 @@ public class EmployeeController {
     public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") long employeeId){
         return  new ResponseEntity<Employee>(employeeService.getEmployeeById(employeeId), HttpStatus.OK);
     }
+
+//    @GetMapping("/{email}")
+//    public ResponseEntity<Employee> getEmployeeByEmail( String email){
+//        return  new ResponseEntity<Employee>(employeeService.getEmployeeByEmail(email), HttpStatus.OK);
+//    }
+
+//    @GetMapping("{email}")
+//    public Employee getEmployeeByEmail(String email){
+//        return  employeeService.getEmployeeByEmail(email);
+//    }
 
     @PutMapping("{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long employeeId, @RequestBody Employee employee){

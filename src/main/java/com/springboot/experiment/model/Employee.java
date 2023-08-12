@@ -18,4 +18,5 @@ public class Employee {
     @Email
     @Column(name = "email", nullable = false, unique = true)
     private  String email;
+
 }
